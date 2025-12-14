@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalog · NxtMarket</title>
+    <link rel="stylesheet" href="/public/css/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>NxtMarket</h1>
+      <nav>
+        <a href="/catalog">Catalog</a>
+        <a href="/orders/me">My Orders</a>
+        <a href="/login">Login</a>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <form method="GET" action="/catalog" style="margin: 1rem 0">
+          <input name="search" placeholder="Search..." value="{{SEARCH_VALUE}}" />
+          <button type="submit">Go</button>
+        </form>
+
+        <ul
+          id="product-list"
+          style="
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+          ">
+          {{PRODUCT_LIST}}
+        </ul>
+
+        <!--
+        Item template (repeat server-side):
+        <li style="border:1px solid #eee;border-radius:12px;padding:12px;">
+          <a href="/product/{{SKU}}" style="text-decoration:none;color:inherit;">
+            <img src="{{IMAGE_URL}}" alt="{{TITLE}}" style="width:100%;height:160px;object-fit:cover;border-radius:8px"/>
+            <h3 style="margin:0.5rem 0 0.25rem 0;">{{TITLE}}</h3>
+            <p style="margin:0;color:#444;">${{PRICE}} · Stock: {{STOCK}}</p>
+          </a>
+        </li>
+      --></section>
+    </main>
+  </body>
+</html>

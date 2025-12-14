@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{PAGE_TITLE}} · NxtMarket</title>
+    <link rel="stylesheet" href="/public/css/main.css" />
+    <style>
+      body {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        margin: 0;
+        padding: 0 1rem;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+      }
+      nav a {
+        margin-right: 1rem;
+        text-decoration: none;
+        color: #333;
+      }
+      main {
+        max-width: 960px;
+        margin: 1.5rem auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>NxtMarket</h1>
+      <nav>
+        <a href="/catalog">Catalog</a>
+        <a href="/orders/me">My Orders</a>
+        <a href="/login">Login</a>
+      </nav>
+    </header>
+    <main>{{BODY}}</main>
+  </body>
+</html>

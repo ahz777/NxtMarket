@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{TITLE}} · NxtMarket</title>
+    <link rel="stylesheet" href="/public/css/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>NxtMarket</h1>
+      <nav>
+        <a href="/catalog">Catalog</a>
+        <a href="/orders/me">My Orders</a>
+        <a href="/login">Login</a>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <img
+          src="{{IMAGE_URL}}"
+          alt="{{TITLE}}"
+          style="max-width: 420px; width: 100%; border-radius: 12px" />
+        <h2>{{TITLE}}</h2>
+        <p>{{DESCRIPTION}}</p>
+        <p><strong>Price:</strong> ${{PRICE}} &nbsp; | &nbsp; <strong>Stock:</strong> {{STOCK}}</p>
+
+        <form method="POST" action="/api/cart/add" style="margin: 1rem 0">
+          <input type="hidden" name="sku" value="{{SKU}}" />
+          <input type="number" name="qty" min="1" value="1" />
+          <button type="submit">Add to Cart</button>
+        </form>
+
+        <h3>Reviews</h3>
+        <ul style="list-style: none; padding: 0">
+          {{REVIEWS}}
+        </ul>
+        <!--
+        Review template:
+        <li style="padding:8px 0;border-bottom:1px solid #eee;">
+          <span>{{RATING}}★</span> — <span>{{COMMENT}}</span>
+        </li>
+      --></article>
+
+      <!-- optional websocket snippet (populate ORDER_ID to enable) -->
+      <div id="order-status" data-order-id="{{ORDER_ID}}" style="display: none">
+        Status: <span id="status">{{ORDER_STATUS}}</span>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+          (function () {
+            if (!'{{ORDER_ID}}') return;
+            const socket = io('/orders');
+            socket.on('order_status_changed', (p) => {
+              if (p.orderId === '{{ORDER_ID}}') {
+                document.getElementById('status').innerText = p.status;
+              }
+            });
+          })();
+        </script>
+      </div>
+    </main>
+  </body>
+</html>

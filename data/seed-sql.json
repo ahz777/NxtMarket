@@ -1,0 +1,23 @@
+{
+  "orders": [
+    { "userId": "mongo_user_id_alice", "status": "PAID", "total": 98.99 },
+    { "userId": "mongo_user_id_alice", "status": "PENDING", "total": 39.5 }
+  ],
+  "orderItems": [
+    {
+      "orderIndex": 0,
+      "productSku": "NX-1002",
+      "title": "Mechanical Keyboard",
+      "price": 79.0,
+      "qty": 1
+    },
+    {
+      "orderIndex": 0,
+      "productSku": "NX-1001",
+      "title": "Wireless Mouse",
+      "price": 19.99,
+      "qty": 1
+    },
+    { "orderIndex": 1, "productSku": "NX-3001", "title": "USB-C Hub", "price": 39.5, "qty": 1 }
+  ]
+}
