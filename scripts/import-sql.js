@@ -1,7 +1,7 @@
 // Sample script to import SQL seed data using Sequelize
 const fs = require('fs');
 const path = require('path');
-const { sequelize } = require('../src/config/db.sql');
+const { sequelize } = require('../src/config/sequelize');
 const { Order } = require('../src/modules/orders/order.model');
 const { OrderItem } = require('../src/modules/orders/orderItem.model');
 
