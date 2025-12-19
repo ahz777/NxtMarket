@@ -1,7 +1,21 @@
 const crypto = require('crypto');
+const { validate: uuidValidate } = require('uuid');
 const ApiError = require('../../utils/ApiError');
 const paymentsConfig = require('../../config/payments');
 const { STATES } = require('../orders/order.states');
+
+/**
+ * Deterministic signature used by the webhook stub.
+ * Algorithm: sha256(eventId + secret) -> hex
+ */
+function createWebhookSignature(eventId, secret = paymentsConfig.webhookSecret) {
+  if (!eventId) throw new Error('eventId is required to sign webhook payload');
+
+  return crypto
+    .createHash('sha256')
+    .update(String(eventId) + secret)
+    .digest('hex');
+}
 
 function signStubClientSecret() {
   return crypto.randomBytes(24).toString('hex');
@@ -79,10 +93,7 @@ async function handleWebhook({ headers, body, models }) {
 
   // Signature placeholder: require a deterministic match for dev/testing
   // Compute: sha256(eventId + secret)
-  const expected = crypto
-    .createHash('sha256')
-    .update(String(eventId) + paymentsConfig.webhookSecret)
-    .digest('hex');
+  const expected = createWebhookSignature(eventId);
 
   if (!signature || signature !== expected) {
     throw new ApiError(401, 'Invalid webhook signature');
@@ -99,6 +110,9 @@ async function handleWebhook({ headers, body, models }) {
 
   if (type === 'payment_succeeded') {
     if (!orderId) throw new ApiError(400, 'Missing data.orderId');
+    if (!uuidValidate(orderId)) {
+      throw new ApiError(400, 'Invalid orderId format');
+    }
 
     const order = await Order.findByPk(orderId);
     if (!order) throw new ApiError(404, 'Order not found');
@@ -135,4 +149,4 @@ async function handleWebhook({ headers, body, models }) {
   return response;
 }
 
-module.exports = { createIntent, handleWebhook };
+module.exports = { createIntent, handleWebhook, createWebhookSignature };
