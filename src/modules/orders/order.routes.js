@@ -1,0 +1,23 @@
+const express = require('express');
+const { authRequired, requireRole } = require('../../middleware/auth');
+const { validateBody } = require('../../middleware/validate');
+const controller = require('./order.controller');
+const { requireIdempotencyKey } = require('../../middleware/idempotency');
+
+const router = express.Router();
+
+// User
+router.post('/', authRequired, requireRole('user'), requireIdempotencyKey, controller.checkout);
+router.get('/my', authRequired, requireRole('user'), controller.myOrders);
+router.get('/:id', authRequired, controller.getById);
+
+// Admin-only status updates
+router.patch(
+  '/:id/status',
+  authRequired,
+  requireRole('admin'),
+  validateBody(['status']),
+  controller.updateStatus
+);
+
+module.exports = router;

@@ -1,15 +1,34 @@
-const fs = require('fs');
 const path = require('path');
-const morgan = require('morgan');
 const winston = require('winston');
-const logDir = path.join(__dirname, '../../logs');
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-}
-const requestStream = fs.createWriteStream(path.join(logDir, 'requests.log'), { flags: 'a' });
+
+const logsDir = path.join(process.cwd(), 'logs');
+
 const logger = winston.createLogger({
   level: 'info',
-  format: winston.format.json(),
-  transports: [new winston.transports.File({ filename: path.join(logDir, 'app.log') })],
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.errors({ stack: true }),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.File({
+      filename: path.join(logsDir, 'app.log'),
+      level: 'info',
+    }),
+    new winston.transports.File({
+      filename: path.join(logsDir, 'errors.log'),
+      level: 'error',
+    }),
+  ],
 });
-module.exports = { logger, requestStream };
+
+// Console in dev (keeps files always)
+if (process.env.NODE_ENV !== 'production') {
+  logger.add(
+    new winston.transports.Console({
+      format: winston.format.combine(winston.format.colorize(), winston.format.simple()),
+    })
+  );
+}
+
+module.exports = logger;
