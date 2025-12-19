@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const logger = require('../config/logger');
 
 function fileSizeSafe(p) {
   try {
@@ -39,8 +40,7 @@ function startHealthServer({ healthPort }) {
   });
 
   server.listen(healthPort, () => {
-    // eslint-disable-next-line no-console
-    console.log(`[health] listening on :${healthPort}`);
+    logger.info(`[health] listening on :${healthPort}`);
   });
 
   return server;

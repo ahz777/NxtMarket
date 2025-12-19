@@ -16,6 +16,7 @@ const env = {
     db: process.env.SQL_DB,
     user: process.env.SQL_USER,
     password: process.env.SQL_PASSWORD,
+    logging: String(process.env.SQL_LOGGING || 'false').toLowerCase() === 'true',
   },
 
   jwt: {

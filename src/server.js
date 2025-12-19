@@ -61,7 +61,6 @@ async function bootstrap() {
 
   server.listen(env.port, () => {
     logger.info(`API listening on :${env.port}`);
-    console.log(`[api] listening on :${env.port}`);
   });
 }
 

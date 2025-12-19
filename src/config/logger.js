@@ -2,9 +2,10 @@ const path = require('path');
 const winston = require('winston');
 
 const logsDir = path.join(process.cwd(), 'logs');
+const logLevel = process.env.LOG_LEVEL || 'info';
 
 const logger = winston.createLogger({
-  level: 'info',
+  level: logLevel,
   format: winston.format.combine(
     winston.format.timestamp(),
     winston.format.errors({ stack: true }),
@@ -26,6 +27,7 @@ const logger = winston.createLogger({
 if (process.env.NODE_ENV !== 'production') {
   logger.add(
     new winston.transports.Console({
+      level: logLevel,
       format: winston.format.combine(winston.format.colorize(), winston.format.simple()),
     })
   );
