@@ -7,7 +7,14 @@ function defineOrder(sequelize) {
       id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, primaryKey: true },
       userId: { type: DataTypes.STRING, allowNull: false },
       status: {
-        type: DataTypes.ENUM('PENDING', 'PAID', 'SHIPPED', 'CANCELLED'),
+        type: DataTypes.ENUM(
+          'PENDING',
+          'PAID',
+          'PARTIALLY_SHIPPED',
+          'SHIPPED',
+          'CANCELLED',
+          'REFUNDED'
+        ),
         allowNull: false,
         defaultValue: 'PENDING',
       },

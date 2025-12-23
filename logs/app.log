@@ -39,3 +39,93 @@
 {"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T14:16:15.316Z"}
 {"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T14:16:15.317Z"}
 {"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-19T14:16:21.474Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:05:46.115Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:05:46.338Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:05:46.502Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:05:46.508Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:05:46.509Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:06:10.600Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:06:10.739Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:06:10.931Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:06:10.937Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:06:10.937Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:06:21.001Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:06:21.141Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:06:21.323Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:06:21.329Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:06:21.330Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:06:33.583Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:06:33.723Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:06:33.915Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:06:33.921Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:06:33.922Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:07:13.744Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:07:13.971Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:07:14.144Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:07:14.150Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:07:14.150Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:07:17.107Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:07:17.265Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:07:17.476Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:07:17.482Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:07:17.482Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:07:46.090Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:07:46.218Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:07:46.392Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:07:46.398Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:07:46.398Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:07:52.639Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:07:52.769Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:07:52.901Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:07:52.907Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:07:52.907Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:08:22.339Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:08:22.594Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:08:22.795Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:08:22.802Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:08:22.803Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:08:25.797Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:08:25.924Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:08:26.104Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:08:26.109Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:08:26.110Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:08:53.555Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:08:53.687Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:08:53.875Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:08:53.883Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:08:53.883Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:11:29.524Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:11:29.651Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:11:29.821Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:11:29.827Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:11:29.828Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:11:43.679Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:11:43.912Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:11:44.067Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:11:44.074Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:11:44.074Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T15:40:34.586Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T15:40:34.712Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T15:40:34.875Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T15:40:34.882Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T15:40:34.882Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T16:25:40.435Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T16:25:40.557Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T16:25:40.678Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T16:25:40.684Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T16:25:40.685Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T16:25:56.759Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T16:25:56.887Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T16:25:57.015Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T16:25:57.021Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T16:25:57.022Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T16:57:35.257Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T16:57:35.381Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T16:57:35.522Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T16:57:35.528Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T16:57:35.528Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-19T16:57:38.720Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-19T16:57:39.008Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-19T16:57:39.190Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T16:57:39.197Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T16:57:39.198Z"}

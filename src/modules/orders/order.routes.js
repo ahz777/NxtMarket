@@ -9,6 +9,8 @@ const router = express.Router();
 // User
 router.post('/', authRequired, requireRole('user'), requireIdempotencyKey, controller.checkout);
 router.get('/my', authRequired, requireRole('user'), controller.myOrders);
+router.patch('/:id/cancel', authRequired, requireRole('user'), controller.cancel);
+
 router.get('/:id', authRequired, controller.getById);
 
 // Admin-only status updates

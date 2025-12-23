@@ -112,4 +112,23 @@ const updateStatus = asyncHandler(async (req, res) => {
   res.json({ order: pickOrder(order) });
 });
 
-module.exports = { checkout, myOrders, getById, updateStatus };
+const cancel = asyncHandler(async (req, res) => {
+  const order = await service.cancelOrderByUser({
+    orderId: req.params.id,
+    requester: req.user,
+    models: req.app.locals.models,
+  });
+
+  res.json({
+    order: {
+      id: order.id,
+      userId: order.userId,
+      status: order.status,
+      total: order.total,
+      createdAt: order.createdAt,
+      updatedAt: order.updatedAt,
+    },
+  });
+});
+
+module.exports = { checkout, myOrders, getById, updateStatus, cancel };

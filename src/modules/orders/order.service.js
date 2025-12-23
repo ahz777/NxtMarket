@@ -4,26 +4,60 @@ const ApiError = require('../../utils/ApiError');
 const Cart = require('../cart/cart.model');
 const Product = require('../products/product.model');
 const { getIO } = require('../../sockets/io');
-const { assertTransition } = require('./order.states');
+const { STATES, assertTransition } = require('./order.states');
 
 function isObjectId(id) {
   return mongoose.Types.ObjectId.isValid(id);
 }
 
-/**
- * Atomic decrement in Mongo with stock >= qty guard.
- * We pre-check stock first, then do ordered bulkWrite to avoid partial success.
- */
-async function decrementStockOrFail(lines) {
-  const ops = lines.map((l) => ({
-    updateOne: {
-      filter: { _id: l.productId, stock: { $gte: l.qty } },
-      update: { $inc: { stock: -l.qty } },
-    },
-  }));
+function unique(arr) {
+  return Array.from(new Set(arr));
+}
 
-  const result = await Product.bulkWrite(ops, { ordered: true });
-  if (result.modifiedCount !== ops.length) throw new ApiError(409, 'Insufficient stock');
+async function getVendorIdsForOrder({ orderId, models }) {
+  const { OrderItem } = models;
+  const items = await OrderItem.findAll({ where: { orderId } });
+  return unique(items.map((i) => String(i.vendorId)));
+}
+
+/**
+ * Rollback-safe decrement:
+ * - Decrement each line with a conditional update (stock >= qty)
+ * - If any fail, rollback previously decremented lines by incrementing back.
+ */
+async function decrementStockWithRollback(lines) {
+  const decremented = [];
+
+  try {
+    for (const l of lines) {
+      const res = await Product.updateOne(
+        { _id: l.productId, stock: { $gte: l.qty } },
+        { $inc: { stock: -l.qty } }
+      );
+
+      if (res.modifiedCount !== 1) {
+        throw new ApiError(409, `Insufficient stock for SKU ${l.productSku}`);
+      }
+
+      decremented.push(l);
+    }
+  } catch (err) {
+    // Rollback best-effort
+    for (const l of decremented) {
+      await Product.updateOne({ _id: l.productId }, { $inc: { stock: l.qty } });
+    }
+    throw err;
+  }
+}
+
+async function restockBySkus(items) {
+  // items: [{ productSku, qty }]
+  for (const it of items) {
+    await Product.updateOne(
+      { sku: String(it.productSku).toUpperCase() },
+      { $inc: { stock: Number(it.qty) } }
+    );
+  }
 }
 
 async function emitLowStockIfNeeded(productIds, threshold = 5) {
@@ -47,18 +81,33 @@ async function emitLowStockIfNeeded(productIds, threshold = 5) {
   }
 }
 
-function unique(arr) {
-  return Array.from(new Set(arr));
-}
+async function recomputeOrderShippingStatus(orderId, models) {
+  const { Order, OrderItem } = models;
+  const order = await Order.findByPk(orderId);
+  if (!order) throw new ApiError(404, 'Order not found');
 
-async function getVendorIdsForOrder({ orderId, models }) {
-  const { OrderItem } = models;
   const items = await OrderItem.findAll({ where: { orderId } });
-  return unique(items.map((i) => String(i.vendorId)));
+  if (!items.length) return order;
+
+  const shippedCount = items.filter((i) => i.fulfillmentStatus === 'SHIPPED').length;
+
+  // Only affect shipping status once PAID (or beyond)
+  if (order.status === STATES.PAID || order.status === STATES.PARTIALLY_SHIPPED) {
+    if (shippedCount === 0) {
+      // keep PAID
+      order.status = STATES.PAID;
+    } else if (shippedCount < items.length) {
+      order.status = STATES.PARTIALLY_SHIPPED;
+    } else {
+      order.status = STATES.SHIPPED;
+    }
+    await order.save();
+  }
+
+  return order;
 }
 
 async function checkout({ userId, sequelize, models }) {
-  // 1) Load cart
   const cart = await Cart.findOne({ userId });
   if (!cart || cart.items.length === 0) throw new ApiError(400, 'Cart is empty');
 
@@ -67,7 +116,6 @@ async function checkout({ userId, sequelize, models }) {
     if (!isObjectId(pid)) throw new ApiError(400, 'Invalid productId in cart');
   }
 
-  // 2) Snapshot products
   const products = await Product.find({ _id: { $in: productIds } }).select(
     'sku title price stock vendorId'
   );
@@ -89,27 +137,21 @@ async function checkout({ userId, sequelize, models }) {
     };
   });
 
-  // 3) Pre-check stock
+  // Pre-check stock (fast fail)
   for (const l of lines) {
     const p = productById.get(String(l.productId));
     if (p.stock < l.qty) throw new ApiError(409, `Insufficient stock for SKU ${p.sku}`);
   }
 
-  // 4) Decrement stock (Mongo)
-  await decrementStockOrFail(lines);
+  // Concurrency-safe decrement with rollback
+  await decrementStockWithRollback(lines);
 
-  // 5) Create SQL order (transaction)
   const { Order, OrderItem } = models;
-
   const total = lines.reduce((sum, l) => sum + l.price * l.qty, 0);
 
   const created = await sequelize.transaction(async (t) => {
     const order = await Order.create(
-      {
-        userId: String(userId),
-        status: 'PENDING',
-        total: total.toFixed(2),
-      },
+      { userId: String(userId), status: STATES.PENDING, total: total.toFixed(2) },
       { transaction: t }
     );
 
@@ -121,6 +163,8 @@ async function checkout({ userId, sequelize, models }) {
         price: l.price.toFixed(2),
         qty: l.qty,
         vendorId: l.vendorId,
+        fulfillmentStatus: 'PENDING',
+        shippedAt: null,
       })),
       { transaction: t }
     );
@@ -128,10 +172,8 @@ async function checkout({ userId, sequelize, models }) {
     return order;
   });
 
-  // 6) Clear cart
   await Cart.updateOne({ userId }, { $set: { items: [] } });
 
-  // 7) Emit targeted events (user + all involved vendors)
   const io = getIO();
   if (io) {
     const vendorIds = unique(lines.map((l) => l.vendorId));
@@ -154,7 +196,6 @@ async function checkout({ userId, sequelize, models }) {
     }
   }
 
-  // 8) Low stock warnings (to the right vendor rooms)
   await emitLowStockIfNeeded(productIds);
 
   return { orderId: created.id, status: created.status, total: created.total };
@@ -195,14 +236,16 @@ async function updateStatus({ orderId, status, requester, models }) {
 
   if (requester.role !== 'admin') throw new ApiError(403, 'Forbidden');
 
-  const allowed = new Set(['PENDING', 'PAID', 'SHIPPED', 'CANCELLED']);
-  if (!allowed.has(status)) throw new ApiError(400, 'Invalid status');
+  const desired = String(status).toUpperCase();
+  const allowed = new Set(Object.values(STATES));
+  if (!allowed.has(desired)) throw new ApiError(400, 'Invalid status');
 
   const order = await Order.findByPk(orderId);
   if (!order) throw new ApiError(404, 'Order not found');
 
-  assertTransition(order.status, status);
-  order.status = status;
+  assertTransition(order.status, desired);
+
+  order.status = desired;
   await order.save();
 
   const io = getIO();
@@ -231,4 +274,107 @@ async function updateStatus({ orderId, status, requester, models }) {
   return order;
 }
 
-module.exports = { checkout, listMyOrders, getOrderDetails, updateStatus };
+async function cancelOrderByUser({ orderId, requester, models }) {
+  const { Order, OrderItem } = models;
+
+  const order = await Order.findByPk(orderId);
+  if (!order) throw new ApiError(404, 'Order not found');
+
+  if (String(order.userId) !== String(requester.id)) throw new ApiError(403, 'Forbidden');
+
+  // Only allow cancelling if still PENDING (not paid yet)
+  if (order.status !== STATES.PENDING) {
+    throw new ApiError(409, 'Only PENDING orders can be cancelled');
+  }
+
+  // Update order status
+  order.status = STATES.CANCELLED;
+  await order.save();
+
+  // Restock everything (all items still unshipped by definition)
+  const items = await OrderItem.findAll({ where: { orderId: order.id } });
+  await restockBySkus(items.map((i) => ({ productSku: i.productSku, qty: i.qty })));
+
+  const io = getIO();
+  if (io) {
+    const vendorIds = await getVendorIdsForOrder({ orderId: order.id, models });
+
+    io.of('/orders')
+      .to(`user:${String(order.userId)}`)
+      .emit('order_status_changed', {
+        orderId: order.id,
+        status: order.status,
+        userId: String(order.userId),
+      });
+
+    for (const vid of vendorIds) {
+      io.of('/orders')
+        .to(`vendor:${vid}`)
+        .emit('order_status_changed', {
+          orderId: order.id,
+          status: order.status,
+          userId: String(order.userId),
+        });
+    }
+  }
+
+  return order;
+}
+
+async function vendorShipItem({ orderId, itemId, requester, models }) {
+  const { Order, OrderItem } = models;
+
+  const order = await Order.findByPk(orderId);
+  if (!order) throw new ApiError(404, 'Order not found');
+
+  // Vendors can only ship after payment
+  if (![STATES.PAID, STATES.PARTIALLY_SHIPPED].includes(order.status)) {
+    throw new ApiError(409, 'Order is not ready for shipping');
+  }
+
+  const item = await OrderItem.findByPk(itemId);
+  if (!item || String(item.orderId) !== String(orderId))
+    throw new ApiError(404, 'Order item not found');
+
+  if (requester.role !== 'admin' && String(item.vendorId) !== String(requester.id)) {
+    throw new ApiError(403, 'Forbidden');
+  }
+
+  if (item.fulfillmentStatus === 'SHIPPED') return { order, item };
+
+  item.fulfillmentStatus = 'SHIPPED';
+  item.shippedAt = new Date();
+  await item.save();
+
+  const updatedOrder = await recomputeOrderShippingStatus(orderId, models);
+
+  const io = getIO();
+  if (io) {
+    io.of('/orders')
+      .to(`user:${String(updatedOrder.userId)}`)
+      .emit('order_status_changed', {
+        orderId: updatedOrder.id,
+        status: updatedOrder.status,
+        userId: String(updatedOrder.userId),
+      });
+
+    io.of('/orders')
+      .to(`vendor:${String(item.vendorId)}`)
+      .emit('order_item_shipped', {
+        orderId: updatedOrder.id,
+        itemId: item.id,
+        vendorId: String(item.vendorId),
+      });
+  }
+
+  return { order: updatedOrder, item };
+}
+
+module.exports = {
+  checkout,
+  listMyOrders,
+  getOrderDetails,
+  updateStatus,
+  cancelOrderByUser,
+  vendorShipItem,
+};

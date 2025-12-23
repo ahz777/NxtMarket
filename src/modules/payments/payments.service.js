@@ -110,31 +110,101 @@ async function handleWebhook({ headers, body, models }) {
 
   if (type === 'payment_succeeded') {
     if (!orderId) throw new ApiError(400, 'Missing data.orderId');
-    if (!uuidValidate(orderId)) {
-      throw new ApiError(400, 'Invalid orderId format');
-    }
 
     const order = await Order.findByPk(orderId);
     if (!order) throw new ApiError(404, 'Order not found');
 
-    // Mark latest active intent as succeeded (best-effort)
     const intent = await PaymentIntent.findOne({
       where: { orderId: order.id },
       order: [['createdAt', 'DESC']],
     });
-
     if (intent && intent.status === 'REQUIRES_PAYMENT') {
       intent.status = 'SUCCEEDED';
       await intent.save();
     }
 
-    // Move order to PAID if currently PENDING
+    // PENDING -> PAID
     if (order.status === STATES.PENDING) {
       order.status = STATES.PAID;
       await order.save();
     }
 
     response = { ok: true, eventId, processed: true, orderId: order.id, newStatus: order.status };
+  }
+
+  if (type === 'payment_failed') {
+    if (!orderId) throw new ApiError(400, 'Missing data.orderId');
+
+    const order = await Order.findByPk(orderId);
+    if (!order) throw new ApiError(404, 'Order not found');
+
+    const intent = await PaymentIntent.findOne({
+      where: { orderId: order.id },
+      order: [['createdAt', 'DESC']],
+    });
+    if (intent && intent.status === 'REQUIRES_PAYMENT') {
+      intent.status = 'FAILED';
+      await intent.save();
+    }
+
+    // Keep order PENDING (buyer can retry)
+    response = { ok: true, eventId, processed: true, orderId: order.id, newStatus: order.status };
+  }
+
+  if (type === 'payment_refunded') {
+    if (!orderId) throw new ApiError(400, 'Missing data.orderId');
+
+    const order = await Order.findByPk(orderId);
+    if (!order) throw new ApiError(404, 'Order not found');
+
+    const intent = await PaymentIntent.findOne({
+      where: { orderId: order.id },
+      order: [['createdAt', 'DESC']],
+    });
+    if (intent && intent.status === 'SUCCEEDED') {
+      intent.status = 'CANCELLED'; // provider refunded; we close the intent
+      await intent.save();
+    }
+
+    // If shipped, we mark REFUNDED but do NOT restock automatically.
+    // If not shipped, mark REFUNDED and restock.
+    const { OrderItem } = models;
+    const items = await OrderItem.findAll({ where: { orderId: order.id } });
+
+    if (order.status === STATES.SHIPPED) {
+      order.status = STATES.REFUNDED;
+      await order.save();
+      response = {
+        ok: true,
+        eventId,
+        processed: true,
+        orderId: order.id,
+        newStatus: order.status,
+        restocked: false,
+      };
+    } else {
+      order.status = STATES.REFUNDED;
+      await order.save();
+
+      // Restock only items not shipped
+      const toRestock = items.filter((i) => i.fulfillmentStatus !== 'SHIPPED');
+      const Product = require('../products/product.model'); // local require to avoid cycles
+      for (const it of toRestock) {
+        await Product.updateOne(
+          { sku: String(it.productSku).toUpperCase() },
+          { $inc: { stock: Number(it.qty) } }
+        );
+      }
+
+      response = {
+        ok: true,
+        eventId,
+        processed: true,
+        orderId: order.id,
+        newStatus: order.status,
+        restocked: true,
+      };
+    }
   }
 
   // Save webhook idempotency record
