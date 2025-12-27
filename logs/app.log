@@ -129,3 +129,279 @@
 {"level":"info","message":"Redis disabled","timestamp":"2025-12-19T16:57:39.190Z"}
 {"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-19T16:57:39.197Z"}
 {"level":"info","message":"API listening on :5000","timestamp":"2025-12-19T16:57:39.198Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:22:57.707Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:22:57.873Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:22:58.063Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:22:58.071Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:22:58.071Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:23:29.935Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:23:30.168Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:23:30.341Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:23:30.347Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:23:30.348Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:23:46.576Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:23:46.695Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:23:46.905Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:23:46.914Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:23:46.915Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:24:03.978Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:24:04.101Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:24:04.245Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:24:04.251Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:24:04.252Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:24:16.906Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:24:17.019Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:24:17.207Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:24:17.213Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:24:17.214Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:24:27.104Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:24:27.223Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:24:27.399Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:24:27.405Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:24:27.405Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:25:05.812Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:25:05.920Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:25:06.061Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:25:06.067Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:25:06.067Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:25:21.201Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:25:21.327Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:25:21.454Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:25:21.460Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:25:21.460Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:25:38.092Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:25:38.210Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:25:38.381Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:25:38.387Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:25:38.388Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:25:45.812Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:25:45.944Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:25:46.109Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:25:46.115Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:25:46.116Z"}
+{"level":"error","message":"Unhandled error Only PENDING orders can be paid","method":"POST","path":"/api/payments/intents","status":409,"timestamp":"2025-12-23T11:30:14.808Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:33:38.445Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:33:38.567Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:33:38.704Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:33:38.711Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:33:38.711Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:33:47.200Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:33:47.336Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:33:47.517Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:33:47.523Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:33:47.524Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:34:04.229Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:34:04.436Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:34:04.622Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:34:04.629Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:34:04.630Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:34:18.849Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:34:18.954Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:34:19.113Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:34:19.119Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:34:19.119Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:34:31.347Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:34:31.577Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:34:31.728Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:34:31.734Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:34:31.734Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:36:34.342Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:36:34.570Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:36:34.702Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:36:34.708Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:36:34.708Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T11:36:52.336Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T11:36:52.494Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T11:36:52.679Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T11:36:52.685Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T11:36:52.685Z"}
+{"level":"error","message":"Unhandled error Forbidden","method":"GET","path":"/api/orders/my?page=1&limit=20","status":403,"timestamp":"2025-12-23T11:40:13.794Z"}
+{"level":"error","message":"Unhandled error Only PENDING orders can be cancelled","method":"PATCH","path":"/api/orders/4f05deb1-47cf-4174-8d6c-aa8cba8824b3/cancel","status":409,"timestamp":"2025-12-23T11:59:02.021Z"}
+{"level":"error","message":"Unhandled error Missing or invalid Idempotency-Key header","method":"POST","path":"/api/orders","status":400,"timestamp":"2025-12-23T12:00:21.751Z"}
+{"level":"error","message":"Unhandled error Only PENDING orders can be cancelled","method":"PATCH","path":"/api/orders/a726d951-e84f-46b0-bb60-c7a891962af3/cancel","status":409,"timestamp":"2025-12-23T12:12:09.024Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:15:14.112Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:16:06.024Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:16:27.366Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:16:49.654Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:17:00.301Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:17:06.971Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:17:29.260Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:17:40.482Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:17:57.980Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:18:06.460Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:18:25.990Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:18:35.697Z"}
+{"level":"error","message":"Unhandled error Invalid webhook signature","method":"POST","path":"/api/payments/webhook","status":401,"timestamp":"2025-12-23T12:18:57.360Z"}
+{"level":"error","message":"Unhandled error Only PENDING orders can be cancelled","method":"PATCH","path":"/api/orders/a726d951-e84f-46b0-bb60-c7a891962af3/cancel","status":409,"timestamp":"2025-12-23T12:23:42.302Z"}
+{"level":"error","message":"Unhandled error Only PENDING orders can be cancelled","method":"PATCH","path":"/api/orders/a726d951-e84f-46b0-bb60-c7a891962af3/cancel","status":409,"timestamp":"2025-12-23T12:23:56.048Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:49:58.840Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:49:58.958Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:49:59.117Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:49:59.123Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:49:59.123Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:50:48.600Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:50:48.916Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:50:49.082Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:50:49.087Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:50:49.088Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:51:07.992Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:51:08.124Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:51:08.271Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:51:08.279Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:51:08.279Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:51:10.861Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:51:10.982Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:51:11.148Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:51:11.156Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:51:11.156Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:51:28.333Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:51:28.462Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:51:28.641Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:51:28.647Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:51:28.648Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:51:31.840Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:51:31.972Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:51:32.134Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:51:32.141Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:51:32.142Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:52:05.825Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:52:05.961Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:52:06.133Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:52:06.140Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:52:06.140Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:52:09.209Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:52:09.338Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:52:09.505Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:52:09.512Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:52:09.512Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:52:41.457Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:52:41.582Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:52:41.734Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:52:41.740Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:52:41.740Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:53:22.152Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:53:22.277Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:53:22.416Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:53:22.422Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:53:22.422Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:54:11.338Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:54:11.554Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:54:11.587Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:54:11.587Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:54:11.593Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:54:11.593Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:54:39.484Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:54:39.707Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:54:39.731Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:54:39.731Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:54:39.737Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:54:39.738Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:54:42.612Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:54:42.725Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:54:42.750Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:54:42.750Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:54:42.756Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:54:42.756Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:54:49.435Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:54:49.557Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:54:49.581Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:54:49.582Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:54:49.587Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:54:49.588Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:54:52.305Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:54:52.452Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:54:52.481Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:54:52.482Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:54:52.488Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:54:52.488Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:55:40.050Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:55:40.188Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:55:40.221Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:55:40.221Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:55:40.229Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:55:40.230Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:55:53.077Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:55:53.191Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:55:53.218Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:55:53.219Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:55:53.225Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:55:53.226Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:56:03.029Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:56:03.163Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:56:03.187Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:56:03.187Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:56:03.194Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:56:03.194Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:56:22.509Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:56:22.646Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:56:22.675Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:56:22.676Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:56:22.682Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:56:22.683Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:56:25.178Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:56:25.308Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:56:25.335Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:56:25.335Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:56:25.341Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:56:25.342Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:57:40.552Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:57:40.705Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:57:40.737Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:57:40.737Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:57:40.744Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:57:40.745Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:59:33.837Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:59:33.968Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:59:33.997Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:59:33.998Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:59:34.004Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:59:34.004Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T12:59:52.757Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T12:59:52.878Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T12:59:52.908Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T12:59:52.908Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T12:59:52.915Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T12:59:52.915Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T13:00:21.456Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T13:00:21.686Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T13:00:21.716Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T13:00:21.717Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T13:00:21.724Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T13:00:21.724Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T13:00:31.772Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T13:00:31.996Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T13:00:32.025Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T13:00:32.026Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T13:00:32.032Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T13:00:32.032Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T13:00:33.221Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T13:00:33.337Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T13:00:33.364Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T13:00:33.364Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T13:00:33.370Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T13:00:33.371Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T13:00:39.955Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T13:00:40.087Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T13:00:40.115Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T13:00:40.116Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T13:00:40.122Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T13:00:40.122Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-23T13:00:54.369Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-23T13:00:54.485Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-23T13:00:54.523Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-23T13:00:54.524Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-23T13:00:54.534Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-23T13:00:54.534Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2025-12-27T07:56:04.403Z"}
+{"level":"info","message":"PostgreSQL connected (Sequelize)","timestamp":"2025-12-27T07:56:04.525Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-27T07:56:04.558Z"}
+{"level":"info","message":"Redis disabled","timestamp":"2025-12-27T07:56:04.559Z"}
+{"level":"info","message":"[health] listening on :5001","timestamp":"2025-12-27T07:56:04.565Z"}
+{"level":"info","message":"API listening on :5000","timestamp":"2025-12-27T07:56:04.566Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-27T08:00:30.146Z"}
+{"level":"error","message":"Unhandled error relation \"idempotency_keys\" does not exist","method":"POST","path":"/api/orders","stack":"Error: \n    at Query.run (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\dialects\\postgres\\query.js:76:25)\n    at E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\sequelize.js:650:28\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at PostgresQueryInterface.select (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\dialects\\abstract\\query-interface.js:1001:12)\n    at Function.findAll (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\model.js:1824:21)\n    at Function.findOne (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\model.js:1998:12)\n    at Function.findByPk (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\model.js:1955:12)\n    at E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\src\\modules\\orders\\order.controller.js:38:20","status":500,"timestamp":"2025-12-27T08:00:30.739Z"}
+{"details":{"missing":["orderId"]},"level":"error","message":"Unhandled error Validation error","method":"POST","path":"/api/payments/intents","status":400,"timestamp":"2025-12-27T08:00:30.746Z"}
+{"level":"error","message":"Unhandled error relation \"idempotency_keys\" does not exist","method":"POST","path":"/api/payments/webhook","stack":"Error: \n    at Query.run (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\dialects\\postgres\\query.js:76:25)\n    at E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\sequelize.js:650:28\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at PostgresQueryInterface.select (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\dialects\\abstract\\query-interface.js:1001:12)\n    at Function.findAll (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\model.js:1824:21)\n    at Function.findOne (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\model.js:1998:12)\n    at Function.findByPk (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\model.js:1955:12)\n    at Object.handleWebhook (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\src\\modules\\payments\\payments.service.js:109:20)\n    at E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\src\\modules\\payments\\payments.controller.js:15:18","status":500,"timestamp":"2025-12-27T08:00:30.755Z"}
+{"level":"error","message":"Unhandled error relation \"order_items\" does not exist","method":"GET","path":"/api/vendor/orders?includeItems=true","stack":"Error: \n    at Query.run (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\dialects\\postgres\\query.js:76:25)\n    at E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\sequelize.js:650:28\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at PostgresQueryInterface.rawSelect (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\dialects\\abstract\\query-interface.js:1043:18)\n    at Function.aggregate (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\model.js:2067:19)\n    at Function.count (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\model.js:2124:20)\n    at async Promise.all (index 0)\n    at Function.findAndCountAll (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\model.js:2183:27)\n    at Object.listVendorOrders (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\src\\modules\\vendor\\vendor.orders.service.js:11:40)\n    at E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\src\\modules\\vendor\\vendor.orders.controller.js:27:18","status":500,"timestamp":"2025-12-27T08:00:30.769Z"}
+{"level":"info","message":"No pending migrations","timestamp":"2025-12-27T08:00:31.712Z"}
+{"level":"error","message":"Unhandled error relation \"idempotency_keys\" does not exist","method":"POST","path":"/api/payments/webhook","stack":"Error: \n    at Query.run (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\dialects\\postgres\\query.js:76:25)\n    at E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\sequelize.js:650:28\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at PostgresQueryInterface.select (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\dialects\\abstract\\query-interface.js:1001:12)\n    at Function.findAll (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\model.js:1824:21)\n    at Function.findOne (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\model.js:1998:12)\n    at Function.findByPk (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\node_modules\\sequelize\\src\\model.js:1955:12)\n    at Object.handleWebhook (E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\src\\modules\\payments\\payments.service.js:109:20)\n    at E:\\Coding\\Projects\\NxtMarket\\NxtMarket\\src\\modules\\payments\\payments.controller.js:15:18","status":500,"timestamp":"2025-12-27T08:00:31.746Z"}

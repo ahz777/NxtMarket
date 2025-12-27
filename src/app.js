@@ -18,11 +18,14 @@ const vendorRoutes = require('./modules/vendor/vendor.routes');
 const adminRoutes = require('./modules/admin/admin.routes');
 const paymentsRoutes = require('./modules/payments/payments.routes');
 
+const { generalLimiter, authLimiter, webhookLimiter } = require('./middleware/rateLimiters');
+
 function createApp({ corsOrigin }) {
   const app = express();
 
   app.use(helmet());
   app.use(cors({ origin: corsOrigin === '*' ? true : corsOrigin }));
+  app.use(generalLimiter);
 
   app.use(requestLogger());
 
@@ -37,7 +40,7 @@ function createApp({ corsOrigin }) {
   });
 
   // Routes
-  app.use('/api/auth', authRoutes);
+  app.use('/api/auth', authLimiter, authRoutes);
   app.use('/api/products', productRoutes);
   app.use('/api/cart', cartRoutes);
   app.use('/api/orders', orderRoutes);
@@ -46,6 +49,7 @@ function createApp({ corsOrigin }) {
   app.use('/api/vendor', vendorRoutes);
   app.use('/api/admin', adminRoutes);
   app.use('/api/payments', paymentsRoutes);
+  app.use('/api/payments/webhook', webhookLimiter);
 
   // Protected verification endpoint
   app.get('/api/whoami', authRequired, (req, res) => {

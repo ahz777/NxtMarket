@@ -20,6 +20,12 @@ const defineOrderItem = require('./modules/orders/orderItem.model');
 const defineIdempotencyKey = require('./modules/payments/idempotency.model');
 const definePaymentIntent = require('./modules/payments/paymentIntent.model');
 
+// Migrations
+const { runMigrations } = require('./db/umzug');
+
+// Audit Log Model
+const defineAuditLog = require('./modules/audit/audit.model');
+
 async function bootstrap() {
   ensureAppDirs();
   assertRequired();
@@ -37,16 +43,18 @@ async function bootstrap() {
   Order.hasMany(OrderItem, { foreignKey: 'orderId', as: 'items' });
   OrderItem.belongsTo(Order, { foreignKey: 'orderId', as: 'order' });
 
-  // For learning, allow alter; in production you’d use migrations
-  await sequelize.sync({ alter: true });
+  // Run pending migrations
+  await runMigrations(sequelize);
 
   await initRedis(env.redis);
 
   const app = createApp({ corsOrigin: env.corsOrigin });
 
+  const AuditLog = defineAuditLog(sequelize);
+
   // Make SQL available to routes/controllers
   app.locals.sequelize = sequelize;
-  app.locals.models = { Order, OrderItem, IdempotencyKey, PaymentIntent };
+  app.locals.models = { Order, OrderItem, IdempotencyKey, PaymentIntent, AuditLog };
 
   const server = http.createServer(app);
 

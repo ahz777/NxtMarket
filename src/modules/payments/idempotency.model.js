@@ -7,7 +7,7 @@ function defineIdempotencyKey(sequelize) {
       key: { type: DataTypes.STRING(128), primaryKey: true },
       userId: { type: DataTypes.STRING, allowNull: false },
       endpoint: { type: DataTypes.STRING, allowNull: false },
-      // store JSON response as JSONB for clean retrieval
+      requestHash: { type: DataTypes.STRING(64), allowNull: true }, // sha256 hex
       response: { type: DataTypes.JSONB, allowNull: true },
       statusCode: { type: DataTypes.INTEGER, allowNull: true },
     },

@@ -3,6 +3,7 @@ const { validate: uuidValidate } = require('uuid');
 const ApiError = require('../../utils/ApiError');
 const paymentsConfig = require('../../config/payments');
 const { STATES } = require('../orders/order.states');
+const { writeAudit } = require('../audit/audit.service');
 
 /**
  * Deterministic signature used by the webhook stub.
@@ -88,6 +89,10 @@ async function handleWebhook({ headers, body, models }) {
   const eventId = body?.eventId;
   const type = body?.type;
   const orderId = body?.data?.orderId;
+  const requestHash = crypto
+    .createHash('sha256')
+    .update(JSON.stringify(body ?? {}))
+    .digest('hex');
 
   if (!eventId || !type) throw new ApiError(400, 'Invalid webhook payload');
 
@@ -100,16 +105,35 @@ async function handleWebhook({ headers, body, models }) {
   }
 
   // Webhook idempotency (by eventId)
-  const existing = await IdempotencyKey.findByPk(`webhook:${eventId}`);
-  if (existing?.response) {
-    return existing.response;
+  const key = `webhook:${eventId}`;
+  const existing = await IdempotencyKey.findByPk(key);
+
+  if (existing) {
+    // Replay protection: same eventId must match same payload hash
+    if (existing.requestHash && existing.requestHash !== requestHash) {
+      throw new ApiError(409, 'Webhook replay payload mismatch');
+    }
+
+    // If already processed, return stored response
+    if (existing.response) return existing.response;
   }
+
+  // Store/lock early (best effort)
+  await IdempotencyKey.upsert({
+    key,
+    userId: 'webhook',
+    endpoint: 'webhook',
+    requestHash,
+    response: null,
+    statusCode: null,
+  });
 
   // Process
   let response = { ok: true, eventId, processed: false };
 
   if (type === 'payment_succeeded') {
     if (!orderId) throw new ApiError(400, 'Missing data.orderId');
+    if (!uuidValidate(orderId)) throw new ApiError(400, 'Invalid orderId format');
 
     const order = await Order.findByPk(orderId);
     if (!order) throw new ApiError(404, 'Order not found');
@@ -129,11 +153,22 @@ async function handleWebhook({ headers, body, models }) {
       await order.save();
     }
 
+    await writeAudit({
+      models,
+      actorType: 'webhook',
+      actorId: eventId,
+      entityType: 'order',
+      entityId: order.id,
+      action: `payment.${type}`,
+      data: { eventId, newStatus: order.status },
+    });
+
     response = { ok: true, eventId, processed: true, orderId: order.id, newStatus: order.status };
   }
 
   if (type === 'payment_failed') {
     if (!orderId) throw new ApiError(400, 'Missing data.orderId');
+    if (!uuidValidate(orderId)) throw new ApiError(400, 'Invalid orderId format');
 
     const order = await Order.findByPk(orderId);
     if (!order) throw new ApiError(404, 'Order not found');
@@ -147,12 +182,23 @@ async function handleWebhook({ headers, body, models }) {
       await intent.save();
     }
 
+    await writeAudit({
+      models,
+      actorType: 'webhook',
+      actorId: eventId,
+      entityType: 'order',
+      entityId: order.id,
+      action: `payment.${type}`,
+      data: { eventId, newStatus: order.status },
+    });
+
     // Keep order PENDING (buyer can retry)
     response = { ok: true, eventId, processed: true, orderId: order.id, newStatus: order.status };
   }
 
   if (type === 'payment_refunded') {
     if (!orderId) throw new ApiError(400, 'Missing data.orderId');
+    if (!uuidValidate(orderId)) throw new ApiError(400, 'Invalid orderId format');
 
     const order = await Order.findByPk(orderId);
     if (!order) throw new ApiError(404, 'Order not found');
@@ -205,16 +251,20 @@ async function handleWebhook({ headers, body, models }) {
         restocked: true,
       };
     }
+
+    await writeAudit({
+      models,
+      actorType: 'webhook',
+      actorId: eventId,
+      entityType: 'order',
+      entityId: order.id,
+      action: `payment.${type}`,
+      data: { eventId, newStatus: order.status },
+    });
   }
 
   // Save webhook idempotency record
-  await IdempotencyKey.upsert({
-    key: `webhook:${eventId}`,
-    userId: 'webhook',
-    endpoint: 'webhook',
-    response,
-    statusCode: 200,
-  });
+  await IdempotencyKey.update({ response, statusCode: 200 }, { where: { key } });
 
   return response;
 }

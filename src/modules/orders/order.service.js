@@ -5,6 +5,7 @@ const Cart = require('../cart/cart.model');
 const Product = require('../products/product.model');
 const { getIO } = require('../../sockets/io');
 const { STATES, assertTransition } = require('./order.states');
+const { writeAudit } = require('../audit/audit.service');
 
 function isObjectId(id) {
   return mongoose.Types.ObjectId.isValid(id);
@@ -198,6 +199,16 @@ async function checkout({ userId, sequelize, models }) {
 
   await emitLowStockIfNeeded(productIds);
 
+  await writeAudit({
+    models,
+    actorType: 'user',
+    actorId: userId,
+    entityType: 'order',
+    entityId: created.id,
+    action: 'order.created',
+    data: { status: created.status, total: created.total },
+  });
+
   return { orderId: created.id, status: created.status, total: created.total };
 }
 
@@ -245,6 +256,7 @@ async function updateStatus({ orderId, status, requester, models }) {
 
   assertTransition(order.status, desired);
 
+  const from = order.status;
   order.status = desired;
   await order.save();
 
@@ -267,9 +279,19 @@ async function updateStatus({ orderId, status, requester, models }) {
           orderId: order.id,
           status: order.status,
           userId: String(order.userId),
-        });
+      });
     }
   }
+
+  await writeAudit({
+    models,
+    actorType: 'admin',
+    actorId: requester.id,
+    entityType: 'order',
+    entityId: order.id,
+    action: 'order.status_changed',
+    data: { from, to: order.status },
+  });
 
   return order;
 }
@@ -317,6 +339,16 @@ async function cancelOrderByUser({ orderId, requester, models }) {
         });
     }
   }
+
+  await writeAudit({
+    models,
+    actorType: 'user',
+    actorId: requester.id,
+    entityType: 'order',
+    entityId: order.id,
+    action: 'order.cancelled',
+    data: { restocked: true },
+  });
 
   return order;
 }
@@ -366,6 +398,16 @@ async function vendorShipItem({ orderId, itemId, requester, models }) {
         vendorId: String(item.vendorId),
       });
   }
+
+  await writeAudit({
+    models,
+    actorType: requester.role === 'admin' ? 'admin' : 'vendor',
+    actorId: requester.id,
+    entityType: 'order_item',
+    entityId: item.id,
+    action: 'order_item.shipped',
+    data: { orderId, vendorId: item.vendorId },
+  });
 
   return { order: updatedOrder, item };
 }
