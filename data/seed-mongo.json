@@ -1,0 +1,51 @@
+{
+  "users": [
+    {
+      "name": "Admin",
+      "email": "admin@nxt.com",
+      "password": "Admin@123",
+      "role": "admin"
+    },
+    {
+      "name": "Vendor One",
+      "email": "vendor1@nxt.com",
+      "password": "Vendor@123",
+      "role": "vendor"
+    },
+    {
+      "name": "Alice",
+      "email": "alice@nxt.com",
+      "password": "User@123",
+      "role": "user"
+    }
+  ],
+  "products": [
+    {
+      "sku": "NX-1001",
+      "title": "Wireless Mouse",
+      "description": "Ergonomic 2.4G mouse",
+      "price": 19.99,
+      "stock": 45,
+      "images": ["mouse.jpg"],
+      "categories": ["peripherals"]
+    },
+    {
+      "sku": "NX-1002",
+      "title": "Mechanical Keyboard",
+      "description": "Blue switches",
+      "price": 79.0,
+      "stock": 20,
+      "images": ["keyboard.jpg"],
+      "categories": ["peripherals"]
+    },
+    {
+      "sku": "NX-3001",
+      "title": "USB-C Hub",
+      "description": "7-in-1 hub",
+      "price": 39.5,
+      "stock": 15,
+      "images": ["hub.jpg"],
+      "categories": ["adapters"]
+    }
+  ]
+}
